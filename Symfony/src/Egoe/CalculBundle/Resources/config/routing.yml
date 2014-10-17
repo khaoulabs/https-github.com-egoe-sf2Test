@@ -1,0 +1,12 @@
+egoe_calcul_homepage:
+    path:     /hello
+    defaults: { _controller: EgoeCalculBundle:Hello:index }
+calculer:
+    path:     /calculer
+    defaults: { _controller: EgoeCalculBundle:Hello:calculer }
+historiques:
+    path:     /historiques
+    defaults: { _controller: EgoeCalculBundle:Hello:historiques }
+calcul:
+    path:     /calculer/calcul
+    defaults: { _controller: EgoeCalculBundle:Hello:calcul }

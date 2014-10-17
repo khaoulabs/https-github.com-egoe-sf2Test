@@ -1,0 +1,4 @@
+egoe_calcul:
+    resource: "@EgoeCalculBundle/Resources/config/routing.yml"
+    prefix:   /
+

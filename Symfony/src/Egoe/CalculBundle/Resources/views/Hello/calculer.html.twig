@@ -1,0 +1,60 @@
+<script type="text/javascript" src="/webroot/symfony/web/bundles/egoecalcul/js/jquery.js"></script>
+<script type="text/javascript" src="/webroot/symfony/web/bundles/egoecalcul/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="/webroot/symfony/web/bundles/egoecalcul/js/jquery-1.6.min.js"></script>
+<script type="text/javascript" src="/webroot/symfony/web/bundles/egoecalcul/js/jquery-ui-1.8.6.custom.min.js"></script>
+<script type="text/javascript">
+    function calcul(){
+
+        var data = "";
+
+        var var1 = $('#var1').val();
+        var var2 = $('#var2').val();
+        var operateur = $('#operateur').val();
+
+        data = data + "&var1="+var1;
+        data = data + "&var2="+var2;
+        data = data + "&operateur="+operateur;
+
+        $.ajax({
+            type: "POST",
+            url: "hello/calcul",
+            data: data,
+            success: function(result){
+                $('#result').value = result;
+                $('#result').display;
+            },
+            error: function(){
+                alert('Erreur lors de la validation');
+
+            }
+        });
+
+    }
+</script>
+
+<div>
+    <div>
+        <a href="{{ path('egoe_calcul_homepage') }}">Homepage</a>
+    </div>
+    <div>
+        <a href="{{ path('calculer') }}">Calculer</a>
+    </div>
+    <div>
+        <a href="{{ path('historiques') }}">Historiques</a>
+    </div>
+</div>
+
+Calculatrice
+<form method="post">
+    <input id="var1" type="text" name="var1">
+    <select name="operateur">
+        <option value="add" id="add">Addition</option>
+        <option value="sous" id="sous">Soustraction</option>
+        <option value="mult" id="mult">Multiplication</option>
+        <option value="sub" id="sub">Soustraction</option>
+    </select>
+    <input id="var2" type="text" name="var2">
+    <input type="submit" name="calculer" value="Calculer" onsubmit="return calcul();">
+</form>
+<input id="result" type="result" name="var2" style="display: none;">
+
